@@ -1,15 +1,17 @@
+; nasm -f bin -o calc.com calc.asm
+
 org  0x100               ; Вказуємо, що це програма .COM
 section .data
     a db 5               ; Визначаємо a = 5
-    b db 3               ; Визначаємо b = 3
+    b db 5               ; Визначаємо b = 5
     c db 2               ; Визначаємо c = 2
     resultMsg db 'Result: $' ; Визначення рядка для виведення результату
 
 section .text
 _start:
-    mov al, [a]          ; Завантажуємо a в al
-    add al, [b]          ; Додаємо b до al
-    sub al, [c]          ; Віднімаємо c від al
+    mov al, [b]          ; Завантажуємо b в al
+    sub al, [c]          ; Віднімаємо b від al
+    add al, [a]          ; Додаємо a до al
 
     ; Перетворення результату в ASCII символ (для однозначних чисел)
     add al, 30h          ; Перетворюємо число в ASCII символ
